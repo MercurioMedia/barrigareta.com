@@ -48,6 +48,11 @@
   </head>
   <body>
     
+    <div class="header-aviso">
+<footer class="bg-black py-3 text-center">
+<p class="my-2"><b>VÍDEO DISPONÍVEL SOMENTE ATÉ <span id="dia" style="color: #ff0000;"></span> ÀS 23:59H</b></p>
+</div>
+    
     <header class="py-4">
       <div class="container">
         <div class="row justify-content-center">
@@ -461,5 +466,98 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./assets/js/com.js"></script>
-  </body>
+     
+      <script>
+      var today = new Date();
+    var dd = String(today.getDate());
+    var mm = String(today.getMonth() + 1); //January is 1!
+    var mes = "";
+
+    if (mm == "1") {
+      mes = "JANEIRO";
+    } else if (mm == "2") {
+      mes = "FEVEREIRO";
+    } else if (mm == "3") {
+      mes = "MARÇO";
+    } else if (mm == "4") {
+      mes = "ABRIL";
+    } else if (mm == "5") {
+      mes = "MAIO";
+    } else if (mm == "6") {
+      mes = "JUNHO";
+    } else if (mm == "7") {
+      mes = "JULHO";
+    } else if (mm == "8") {
+      mes = "AGOSTO";
+    } else if (mm == "9") {
+      mes = "SETEMBRO";
+    } else if (mm == "10") {
+      mes = "OUTUBRO";
+    } else if (mm == "11") {
+      mes = "NOVEMBRO";
+    } else if (mm == "12") {
+      mes = "DEZEMBRO";
+    }
+
+    today = dd + ' DE ' + mes;
+
+    document.getElementById("dia").innerHTML = today;
+    (function (b) {
+      var a = {
+        version: "0.0.1",
+        history_api: typeof history.pushState !== "undefined",
+        init: function () {
+          b.location.hash = "#no-back";
+          a.configure();
+        },
+
+        hasChanged: function () {
+          if (b.location.hash == "#no-back") {
+            b.location.hash = "#";
+            b.location.href = "https://protocoloozerogordura.com";
+          }
+        },
+
+        checkCompat: function () {
+          if (b.addEventListener) {
+            b.addEventListener("hashchange", a.hasChanged, false);
+          } else {
+            if (b.attachEvent) {
+              b.attachEvent("onhashchange", a.hasChanged);
+            } else {
+              b.onhashchange = a.hasChanged;
+            }
+          }
+        },
+
+        configure: function () {
+          if (b.location.hash == "#no-back") {
+            if (this.history_api) {
+              history.pushState(null, "", "#");
+            } else {
+              b.location.hash = "#";
+              b.location.href = "https://protocoloozerogordura.com";
+            }
+          }
+          a.checkCompat();
+          a.hasChanged();
+        }
+      };
+      if (typeof define === "function" && define.amd) {
+        define(function () {
+          return a;
+        });
+      } else {
+        if (typeof module === "object" && module.exports) {
+          module.exports = a;
+        } else {
+          b.noback = a;
+        }
+      }
+      a.init();
+    }(window));
+    
+      </script>
+  
+      </body>
 </html>
